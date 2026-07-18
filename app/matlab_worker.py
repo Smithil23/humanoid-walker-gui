@@ -84,6 +84,7 @@ class TrainWorker(QObject):
         progress_file: str,
         stop_file: str,
         agent_file: str = "",
+        rl_model: str = "ddpg",
     ):
         super().__init__()
         self.eng = eng
@@ -94,6 +95,7 @@ class TrainWorker(QObject):
         self.progress_file = progress_file
         self.stop_file = stop_file
         self.agent_file = agent_file
+        self.rl_model = rl_model
 
     def run(self):
         try:
@@ -119,6 +121,7 @@ class TrainWorker(QObject):
                     self.do_train,
                     self.use_parallel,
                     self.agent_file,
+                    self.rl_model,
                     nargout=3,
                 )
                 result = {
@@ -165,7 +168,15 @@ class EngineController:
 
     # -- training ---------------------------------------------------------
     def run_training(
-        self, method, overrides, do_train, use_parallel, on_finished, on_failed, agent_file=""
+        self,
+        method,
+        overrides,
+        do_train,
+        use_parallel,
+        on_finished,
+        on_failed,
+        agent_file="",
+        rl_model="ddpg",
     ):
         self._clear_stop()
         # Fresh progress file so the poller starts clean.
@@ -184,6 +195,7 @@ class EngineController:
             self.progress_file,
             self.stop_file,
             agent_file,
+            rl_model,
         )
         self._worker.moveToThread(self._thread)
         self._thread.started.connect(self._worker.run)

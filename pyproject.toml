@@ -1,0 +1,33 @@
+[project]
+name = "humanoid-walker-gui"
+version = "0.1.0"
+description = "PySide6 control GUI for the MATLAB/Simulink Train Humanoid Walker example"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+    "PySide6>=6.5",
+    "matplotlib>=3.6",
+    "numpy>=1.23",
+    # matlabengine is intentionally not pinned here: it must match your local
+    # MATLAB release and cannot build in CI without a MATLAB install.
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.4", "pytest>=7"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+# Default rules (pyflakes + a subset of pycodestyle) are a sensible baseline.
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+# main.py must call matplotlib.use() before importing the Qt backend,
+# which legitimately places some imports below the top of the file.
+"app/main.py" = ["E402", "I001"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

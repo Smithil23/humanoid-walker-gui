@@ -1,0 +1,5 @@
+PySide6>=6.5
+matplotlib>=3.6
+numpy>=1.23
+# matlabengine: install the build matching your MATLAB release, e.g.
+#   pip install matlabengine==25.2.*   (for MATLAB R2025b)

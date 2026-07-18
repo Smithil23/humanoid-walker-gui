@@ -1,0 +1,42 @@
+# --- MathWorks example files (do NOT commit — copyright The MathWorks) ---
+sm_humanoid_walker_*
+*.slx
+*.slx.r*
+*.stp
+*.mlx
+TrainHumanoidWalkerExample*
+myTrainedHumanoid.mat
+humanoid_walker_*_trained_*.mat
+savedAgents/
+
+# --- MATLAB scratch ---
+*.asv
+*.autosave
+slprj/
+*.slxc
+temp/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+
+# --- Tooling / caches ---
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

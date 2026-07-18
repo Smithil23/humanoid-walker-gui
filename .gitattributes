@@ -1,0 +1,17 @@
+# Normalize line endings: use LF in the repo for all text files.
+# Prevents CRLF (added on Windows checkout) from failing ruff format --check on CI.
+* text=auto eol=lf
+
+# Explicitly LF for the file types this project uses.
+*.py   text eol=lf
+*.m    text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+
+# Binary assets (screenshots) — never touch line endings.
+*.png binary
+*.jpg binary
+*.gif binary
